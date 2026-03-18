@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Tasks</title>
+    <style>
+        body{
+            background-color: rgb(117, 83, 66);
+        }
+        .loop-item{
+            background-color: rgba(181, 142, 107, 0.316);
+            padding: 8px;
+            border: solid rgb(0, 0, 0);
+            border-radius: 21px;
+        }
+        #btn-remove-all{
+            cursor: pointer;
+            background-color: red;
+            font-size: 20px;
+            padding: 10px 30px;
+            border: solid;
+            border-radius: 20px;
+        }
+        #del-each-task{
+            cursor: pointer;
+            background-color: rgb(182, 47, 47);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .try{
+            font-size: 18px;
+        }
+        a{
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="condition">
+    {% if not completed %}
+    
+    <h1 align="center"><a href="/">No completed tasks go finish them ^!^</a></h1>
+
+    {% else %}
+    <h1 align="Center"><a href="/">Completed Tasks</a></h1>
+    <hr>
+    <br>
+    <a href="{% url 'confirmation' %}"><button id="btn-remove-all">Remove all</button></a>
+    {% endif %}
+    </div>
+<br>
+
+
+{% for item in completed %}
+<div class="loop-item">
+<h2><del>{{item.Name}}</del></h2>
+<div class="try"><p>Small description: {{item.Brief}}</div>
+<a href="{% url 'completed_delete' item.id %}"><button id="del-each-task">Delete</button></p></a>
+</div>
+<br>
+{% endfor %}
+
+</body>
+</html>

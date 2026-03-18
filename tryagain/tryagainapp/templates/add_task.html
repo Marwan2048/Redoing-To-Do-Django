@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body align="center" style="background-color: rgb(117, 83, 66);">
+    <form method="post">
+    {% csrf_token %}
+    <div>
+    {{ form.Name.label_tag }}
+    {{ form.Name }}
+    <br>
+    <br>
+</div>
+<div>
+    {{ form.Brief.label_tag }}
+    {{ form.Brief }}
+    <br>
+    <br>
+</div>
+<div>
+    {{ form.Important }}
+    <br>
+</div>
+    <button style="cursor: pointer;" type="submit"> Sumbit
+    <button><a href="{% url 'home' %}">Back</a></button>
+    </form>
+</body>
+</html>

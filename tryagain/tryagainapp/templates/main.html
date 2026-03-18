@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body{
+            background-color: rgb(117, 83, 66);
+        }
+        .header{
+            justify-items:center;
+        }
+        #add , #completed{
+            color:rgba(255, 255, 255, 0.775);
+            background-color:rgba(48, 46, 46, 0.96) ;
+            text-decoration: none;
+            text-align: center;
+            font-size: 25px;
+            border: solid rgba(210, 185, 135, 0.611);
+            border-radius: 25px;
+            padding: 10px;}
+
+
+        .condition{
+            justify-items:center;
+            
+        }
+           
+        .loop-item{
+            background-color: rgb(181, 142, 107);
+            padding: 8px;
+            border: solid rgb(0, 0, 0);
+            border-radius: 24px;
+        }
+        .btn{
+            display: flex;
+            text-align: center;
+            padding: 0px 500px;
+            justify-content: space-around;
+            
+        }
+        #mark{
+            background-color: rgb(0, 255, 0);
+            cursor: pointer;
+            padding: 5px 25px;
+        }
+        #edit{
+            color: rgb(0, 0, 0);
+            background-color:rgb(255, 255, 0);
+            cursor: pointer;
+            padding: 5px 25px;
+        }
+        #delete{
+            color: rgb(255, 255, 255); 
+            background-color:rgb(255, 0, 0);
+            cursor: pointer;
+            padding: 5px 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <h1>Welcome to my To Do APP</h1>
+    </div>
+    <hr>
+    <h2>The app is going to help you store some tasks even with dates if needed to motivate your self through ==>>> <a id="add" href="{% url 'add_task' %}">Add task</a></h2>
+    <h2>Also included the tasks you have completed through ==>>> <a id="completed" href="{% url 'completed_tasks'%}">Completed tasks</a></h2>
+    <br>
+    <hr>
+    <div class="condition">
+    {% if not task %}
+        <h1>There is no tasks go add some !!</h1>
+    {% else %}
+        <h1 style="color: rgb(0, 0, 0);">Your tasks</h1>
+    {% endif %}
+    </div>
+    <hr>
+    <br>
+
+    {% for item in task %}
+    <div class="loop-item">
+        <h2>{{item.Name}}</h2>
+        <p style="font-size: 22px;">Description about "{{item.Name}}" task: {{item.Brief}}</p>
+        <p style="font-size: 22px;">"{{item.Name}}" is considered {{item.Important}} task</p>
+        <div class="btn">
+        <a href="{% url 'mark_as_done' item.id %}"><button id="mark">Mark As Done</button></a>
+        <a href="{% url 'edit' item.id %}"><button id="edit">Edit</button></a>
+        <a href="{% url 'delete' item.id %}"><button id="delete">Delete</button></a>
+         </div>   
+    </div>
+    <br>
+    {% endfor %}
+    
+    
+</body>
+</html>

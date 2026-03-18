@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(117, 83, 66);" align="center">
+    <h3>Are you sure you want to delete all completed tasks</h3>
+    <a href="{% url 'remove_all' %}"><button >Yes</button></a>
+    <button><a href="http://127.0.0.1:8000/completed_tasks/">Back</a></button>
+</body>
+</html>
